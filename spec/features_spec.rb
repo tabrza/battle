@@ -16,7 +16,18 @@ end
 
 feature '#player hit points', :type => :feature do
   scenario 'players have hit points' do
-    sign_in_and_play  
+    sign_in_and_play
     expect(page).to have_content 'Player 2 HP: 100'
+  end
+end
+
+feature '#attack', :type => :feature do
+  scenario 'player 1 attacks player 2'  do
+    sign_in_and_play
+    # visit '/attack'
+    save_and_open_page
+    click_button 'Attack'
+
+    expect(page).to have_content 'Player 2 attacked!'
   end
 end

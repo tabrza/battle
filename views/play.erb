@@ -1,4 +1,10 @@
 <%= @player_1_name%> vs. <%= @player_2_name %>
 <div>
-  Player 2 HP: <%= @player_2_HP %>  
+  Player 2 HP: <%= @player_2_HP  %>
 </div>
+
+<form action='/attack'>
+  <input type='submit' value='Attack'>
+  </form>
+
+<!-- # <%= @player_2_attack %> -->
