@@ -23,9 +23,8 @@ class Battle < Sinatra::Base
   end
 
   get '/attack' do
-    @player_2_attack = "Player 2 attacked!"
-  # session[:player_1_HP] = params[:player_2_name]
-    # erb :attack
+    @player_1_name = session[:player_1_name]
+    @player_2_name = session[:player_2_name]
     erb(:attack)
   end
 
