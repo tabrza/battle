@@ -7,27 +7,24 @@ class Battle < Sinatra::Base
   enable  :sessions
 
   get '/' do
+    session[:attack_confirmation] = nil
     erb :index
   end
 
   post '/names' do
-    $player1 = Player.new(params[:player_1_name])
-    $player2 = Player.new(params[:player_2_name])
+    $game = Game.new(Player.new(params[:player_1_name]),Player.new(params[:player_2_name]))
     redirect '/play'
   end
 
   get '/play' do
-    @player_1_name = $player1.name
-    @player_2_name = $player2.name
-    @player_1_HP = $player1.hp
-    @player_2_HP = $player2.hp
+    @player_1, @player_2  = $game.player1, $game.player2
     @attack_confirmation = session[:attack_confirmation]
     erb(:play)
   end
 
   post '/attack' do
-    Game.new.attack($player2)
-    session[:attack_confirmation] = "#{$player2.name} Attacked"
+    $game.attack($game.player2)
+    session[:attack_confirmation] = "#{$game.player2.name} Attacked"
     redirect '/play'
   end
 
