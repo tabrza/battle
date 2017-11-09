@@ -8,6 +8,14 @@ class Game
     @turn = 1
   end
 
+  def self.store(game)
+    @game = game
+  end
+
+  def self.show
+    @game
+  end
+
   def attack
     if @turn == 1
       player_attack(@player2)
