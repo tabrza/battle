@@ -7,7 +7,7 @@ describe Game do
   subject(:game) { described_class.new(player1, player2) }
 
   describe '#initialize' do
-    it 'respods to player1' do
+    it 'responds to player1' do
       expect(game.player1).to eq player1
     end
     it 'responds to player2' do

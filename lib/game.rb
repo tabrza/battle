@@ -10,14 +10,19 @@ class Game
 
   def attack
     if @turn == 1
-      @player2.deduct_hp
-      @attacked_player = @player2
+      player_attack(@player2)
       @turn = 2
     else
-      @player1.deduct_hp
-      @attacked_player = @player1
+      player_attack(@player1)
       @turn = 1
     end
+  end
+
+  private
+
+  def player_attack(player)
+    player.deduct_hp
+    @attacked_player = player
   end
 
 end
