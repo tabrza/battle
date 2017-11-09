@@ -28,7 +28,7 @@ class Battle < Sinatra::Base
 
   post '/attack' do
     @game.attack
-    session[:attack_confirmation] = "#{@game.attacked_player.name} Attacked"
+    session[:attack_confirmation] = "#{@game.attacked_player.name} has been attacked"
     redirect '/play'
   end
 

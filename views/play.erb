@@ -1,21 +1,61 @@
-<%= @player_1.name %> vs. <%= @player_2.name %>
-<div>
-  Player 1 HP: <%= @player_1.hp %>
-  Player 2 HP: <%= @player_2.hp %>
-</div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Fight Club</title>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  </head>
+  <body class="black-background">
+    <div class="container">
 
-<form action='/attack' method='post'>
-  <input type='submit' value='Attack'>
-</form>
+      <div class="text-center row text-color">
+        <div class="col-md-4 versus black-background">
+          <%= @player_1.name %>
+        </div>
+        <div class="col-md-4 versus">
+          vs.
+        </div>
+        <div class="col-md-4 versus">
+          <%= @player_2.name %>
+        </div>
+      </div>
+      <div class="text-center row text-color">
+        <div class="col-md-4 attack-button">
+          <%= @player_1.hp %>HP
+        </div>
+        <div class="col-md-4">
+          <form action='/attack' method='post'>
+            <button class="btn btn-lg btn-danger attack-button" type='submit' value='Attack'><span id="attack-button-text">Attack</span></button>
+          </form>
+        </div>
+        <div class="col-md-4 attack-button">
+          <%= @player_2.hp %>HP
+        </div>
+      </div>
+    </div>
 
-<div>
-  <% if @attack_confirmation %>
-    <%= @attack_confirmation %>
-  <% end %>
-</div>
-
-<div>
-  <% if @player_2.hp == 0 %>
-    <%= @player_2.name %> loses!
-  <% end %>
-</div>
+    <div class="row">
+      <div class="col-md-2" >
+      </div>
+      <div class="text-center col-md-8 attacked text-color" >
+        <% if @attack_confirmation %>
+        <%= @attack_confirmation %>
+        <% end %>
+      </div>
+      <div class="col-md-2" >
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2" >
+      </div>
+      <div class="text-center col-md-8 attacked lost" >
+        <% if @player_2.hp == 0 %>
+        <%= @player_2.name %> loses!
+        <% end %>
+      </div>
+      <div class="col-md-2" >
+      </div>
+    </div>
+  </body>
+</html>
