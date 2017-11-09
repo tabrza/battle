@@ -16,15 +16,19 @@ class Battle < Sinatra::Base
     redirect '/play'
   end
 
+  before do
+    @game = Game.show
+  end
+
   get '/play' do
-    @player_1, @player_2  = Game.show.player1, Game.show.player2
+    @player_1, @player_2  = @game.player1, @game.player2
     @attack_confirmation = session[:attack_confirmation]
     erb(:play)
   end
 
   post '/attack' do
-    Game.show.attack
-    session[:attack_confirmation] = "#{Game.show.attacked_player.name} Attacked"
+    @game.attack
+    session[:attack_confirmation] = "#{@game.attacked_player.name} Attacked"
     redirect '/play'
   end
 
