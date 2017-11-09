@@ -1,10 +1,13 @@
 <%= @player_1_name%> vs. <%= @player_2_name %>
 <div>
-  Player 2 HP: <%= @player_2_HP  %>
+  Player 1 HP: <%= @player_1_HP %>
+  Player 2 HP: <%= @player_2_HP %>
 </div>
 
-<form action='/attack'>
+<form action='/attack' method='post'>
   <input type='submit' value='Attack'>
-  </form>
+</form>
 
-<!-- # <%= @player_2_attack %> -->
+<% if @attack_confirmation %>
+  <%= @attack_confirmation %>
+<% end %>

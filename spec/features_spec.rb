@@ -1,12 +1,5 @@
 require 'battle'
 
-feature '#homepage', :type => :feature do
-  scenario 'returns testing infrastructure' do
-    visit '/'
-    # expect(page).to have_content 'Testing infrastructure working!'
-  end
-end
-
 feature '#player names', :type => :feature do
   scenario 'players can enter names' do
     sign_in_and_play
@@ -15,7 +8,11 @@ feature '#player names', :type => :feature do
 end
 
 feature '#player hit points', :type => :feature do
-  scenario 'players have hit points' do
+  scenario 'players1 hit points' do
+    sign_in_and_play
+    expect(page).to have_content 'Player 1 HP: 100'
+  end
+  scenario 'players2 hit points' do
     sign_in_and_play
     expect(page).to have_content 'Player 2 HP: 100'
   end
@@ -24,10 +21,7 @@ end
 feature '#attack', :type => :feature do
   scenario 'player 1 attacks player 2'  do
     sign_in_and_play
-    # visit '/attack'
-    save_and_open_page
     click_button 'Attack'
-
-    expect(page).to have_content 'Player 2 attacked!'
+    expect(page).to have_content 'Doe Attacked'
   end
 end

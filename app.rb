@@ -19,13 +19,15 @@ class Battle < Sinatra::Base
     @player_2_name = session[:player_2_name]
     @player_1_HP = 100
     @player_2_HP = 100
+    @attack_confirmation = session[:attack_confirmation]
     erb(:play)
   end
 
-  get '/attack' do
+  post '/attack' do
     @player_1_name = session[:player_1_name]
     @player_2_name = session[:player_2_name]
-    erb(:attack)
+    session[:attack_confirmation] = "#{@player_2_name} Attacked"
+    redirect '/play'
   end
 
 
