@@ -23,10 +23,22 @@ describe Battle, :type => :feature do
       click_button 'Attack'
       expect(page).to have_content 'Doe Attacked'
     end
+    scenario 'player 2 attacks player1 on second turn'  do
+      sign_in_and_play
+      click_button 'Attack'
+      click_button 'Attack'
+      expect(page).to have_content 'John Attacked'
+    end
     scenario 'player2 hp decreases by 10' do
       sign_in_and_play
       click_button 'Attack'
       expect(page).to have_content 'Player 2 HP: 90'
+    end
+    scenario 'player1 hp decreases by 10' do
+      sign_in_and_play
+      click_button 'Attack'
+      click_button 'Attack'
+      expect(page).to have_content 'Player 1 HP: 90'
     end
   end
 end

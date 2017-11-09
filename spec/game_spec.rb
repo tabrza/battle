@@ -17,8 +17,16 @@ describe Game do
 
   describe'#attack' do
     context 'when player1 attacks player2' do
-      it 'reduces player2 hp by 10' do
-        expect(game.attack(player2)).to eq true
+      it 'turn changes' do
+        game.attack
+        expect(game.turn).to eq 2
+      end
+    end
+    context 'when player2 attacks player1' do
+      it 'turn changes' do
+        game.attack
+        game.attack
+        expect(game.turn).to eq 1
       end
     end
   end
