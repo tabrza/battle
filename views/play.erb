@@ -8,6 +8,14 @@
   <input type='submit' value='Attack'>
 </form>
 
-<% if @attack_confirmation %>
-  <%= @attack_confirmation %>
-<% end %>
+<div>
+  <% if @attack_confirmation %>
+    <%= @attack_confirmation %>
+  <% end %>
+</div>
+
+<div>
+  <% if @player_2.hp == 0 %>
+    <%= @player_2.name %> loses!
+  <% end %>
+</div>
