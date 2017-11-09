@@ -1,13 +1,12 @@
-require 'battle'
-
-  feature '#player names', :type => :feature do
+describe Battle, :type => :feature do
+  feature '#player names' do
     scenario 'players can enter names' do
       sign_in_and_play
       expect(page).to have_content 'John vs. Doe'
     end
   end
 
-  feature '#player hit points', :type => :feature do
+  feature '#player hit points' do
     scenario 'players1 hit points' do
       sign_in_and_play
       expect(page).to have_content 'Player 1 HP: 100'
@@ -18,10 +17,11 @@ require 'battle'
     end
   end
 
-  feature '#attack', :type => :feature do
+  feature '#attack' do
     scenario 'player 1 attacks player 2'  do
       sign_in_and_play
       click_button 'Attack'
+      save_and_open_page
       expect(page).to have_content 'Doe Attacked'
     end
     scenario 'player2 hp decreases by 10' do
@@ -30,3 +30,4 @@ require 'battle'
       expect(page).to have_content 'Player 2 HP: 90'
     end
   end
+end

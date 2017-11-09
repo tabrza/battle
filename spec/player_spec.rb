@@ -14,11 +14,9 @@ describe Player do
     end
   end
 
-  describe'#attack' do
-    context 'when player1 attacks player2' do
-      it 'reduces player2 hp by 10' do
-        expect{ player1.attack(player2) }.to change { player2.hp }.by -10
-      end
+  describe '#deduct_hp' do
+    it 'should deduct player hp' do
+        expect { player2.deduct_hp }.to change { player2.hp }.by -10
     end
   end
 end
